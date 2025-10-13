@@ -1,4 +1,5 @@
 using System.Collections;
+using Kirurobo;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ namespace Skyhand
     /// </summary>
     public partial class UIPanel163Key : MonoBehaviour
     {
-        public UniWindowController mUniController;
+        public UniWindowController mDropController;
 
         public InputField mIpApiAddr;
         public InputField mIpOrigin;
@@ -34,15 +35,19 @@ namespace Skyhand
 
         private void Start()
         {
-            mBtnPass.onClick.AddListener(() => { mPanelPass.gameObject.SetActive(true); });
+            mBtnPass.onClick.AddListener(() =>
+            {
+                Debug.Log("点击了加解密");
+                mPanelPass.gameObject.SetActive(true);
+            });
 
             mTvStatus.text = "";
             mTvLog.text = "";
  
-            //控制文件拖拽 
-            mUniController.SetAllowDrop(true);
-            mUniController.OnDropFiles += files =>
+            //控制文件拖拽  
+            mDropController.OnDropFiles += files =>
             {
+                Debug.Log("拖拽文件回来");
                 if (files.Length > 0)
                 {
                     mLog.Enqueue("获取到拖放文件路径：" + files[0]);
