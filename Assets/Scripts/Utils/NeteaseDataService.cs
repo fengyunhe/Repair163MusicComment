@@ -20,7 +20,7 @@ public class NeteaseDataService
     public NeteaseDataService(string dbPath)
     {
         //路径为：/Users/skyhand/Library/Containers/com.netease.163music/Data/Documents/storage/sqlite_storage.sqlite3 
-        _connection = new SQLiteConnection(dbPath, "");
+        _connection = new SQLiteConnection(dbPath,true);
        
     }
 
@@ -33,7 +33,7 @@ public class NeteaseDataService
     {
         if (!string.IsNullOrEmpty(id))
         {
-            var row = _connection.Delete<web_offline_track>(id);
+            var row = _connection.Delete<offlineTrack>(id);
             Debug.Log("删除行索引：" + row + "," + id);
         }
        

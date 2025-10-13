@@ -528,7 +528,7 @@ namespace Skyhand
             //40次请求就更换请求头，防止出现操作操作频繁
             request.SetRequestHeader("User-Agent", HeaderUtils.GetHeader((int) (mDealNum / 40)));
             yield return request.SendWebRequest();
-            if (request.isHttpError || request.isNetworkError)
+            if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
             {
                 Debug.Log("搜索请求失败:" + request.error);
                 mLog.Enqueue("<color=#ff0000>搜索请求失败:" + request.error + "</color>");

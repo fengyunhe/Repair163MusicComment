@@ -59,4 +59,6 @@ sysinfo.txt
 crashlytics-build.properties
 
 output/
+.idea/
+.DS_Store
 
